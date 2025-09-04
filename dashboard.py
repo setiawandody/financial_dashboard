@@ -109,11 +109,15 @@ def revenue_trend(symbol: str, financials: pd.DataFrame):
 
     {data_sample}
 
-    Buat skrip python menggunakan library matplotlib dengan instruksi: 
-    - sumbu x adalah date
-    - sumbu y adalah revenue 
+    Buat skrip python menggunakan library matplotlib 
+    
+    Instruksi:
+    - Sumbu X adalah 'date'
+    - Sumbu Y adalah 'revenue'
+    - PENTING: Simpan plot ke dalam variabel bernama `fig`. Contoh: `fig, ax = plt.subplots()`
 
-    Tulis hanya kode python yang bisa langsung dieksekusi, jangan sertakan penjelasan apapun
+    Tulis HANYA kode Python yang bisa langsung dieksekusi. Jangan sertakan penjelasan apapun.
+    
 
     """
     code = clean_python_code(llm.invoke(prompt).content)
@@ -121,8 +125,7 @@ def revenue_trend(symbol: str, financials: pd.DataFrame):
     with st.expander("📊 Visualisasi Tren Pendapatan"):
         exec_locals = {}
         exec(code, {}, exec_locals)
-        #st.pyplot(exec_locals["fig"])
-
+        st.pyplot(exec_locals["fig"])
 
 def trend_analysis(financials: pd.DataFrame):
     """Interpretasi tren keuangan (LLM)."""
